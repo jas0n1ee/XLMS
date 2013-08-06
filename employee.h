@@ -6,7 +6,6 @@
 #include<time.h>
 using namespace std;
 /*-----------------------------
-<<<<<<< HEAD
 ÓÉÓÚÔ­°æ±¾ÊÇ°´ÕÕ¿Î³ÌÒªÇóÒ»µãµã¸ü¸ÄµÄ
 ÆäÖÐÐí¶àº¯Êý¶¼ÊÇ¶àÓàµÄ£¬Èç¹¹Ôìº¯ÊýµÈµÈ
 Òò´ËÔÚÕâ¸ö°æ±¾ÖÐ£¬ÔÚÊµ¼Ê¹ý³ÌÖÐÓÃ²»µ½µÄ¹¹Ôìº¯ÊýÓèÒÔÉ¾³ý
@@ -21,22 +20,6 @@ const int hour_pay=260; 		//Éè¶¨Ã¿Ð¡Ê±¹¤×Ê
 const double pay_percent=0.05; 	//Éè¶¨Ìá³É±ÈÀý 
 enum type{_manager,_technican,_saleman,_salemanager};
 //Éè¶¨´æ´¢µÄ½á¹¹ÌåÄÚÈÝ
-=======
-ç”±äºŽåŽŸç‰ˆæœ¬æ˜¯æŒ‰ç…§è¯¾ç¨‹è¦æ±‚ä¸€ç‚¹ç‚¹æ›´æ”¹çš„
-å…¶ä¸­è®¸å¤šå‡½æ•°éƒ½æ˜¯å¤šä½™çš„ï¼Œå¦‚æž„é€ å‡½æ•°ç­‰ç­‰
-å› æ­¤åœ¨è¿™ä¸ªç‰ˆæœ¬ä¸­ï¼Œåœ¨å®žé™…è¿‡ç¨‹ä¸­ç”¨ä¸åˆ°çš„æž„é€ å‡½æ•°äºˆä»¥åˆ é™¤
-åŒæ ·çš„ï¼Œä½œä¸ºå‹å…ƒçš„è¿ç®—ç¬¦é‡è½½ï¼Œåœ¨ç¨‹åºä¸­ä¸€æ¬¡éƒ½æ²¡ç”¨åˆ°
-ä½†å¿µæƒ³åˆ°å½“åˆæ•²é‚£ä¹ˆå¤šä¸å®¹æ˜“ï¼Œä»¥åŽçš„åŽç»­åŠŸèƒ½åŠ å…¥å¯ä»¥è°ƒç”¨
-ä¾¿äºˆä»¥ä¿ç•™
------------------------------*/ 
-//è®¾å®šç¼–å·èµ·å§‹ã€å°æ—¶å·¥èµ„ã€ææˆæ¯”ä¾‹ã€æžšä¸¾åž‹ 
-char *rout= "data.dat";
-int em_sum,em_num;  //å‘˜å·¥ç¼–å·ä¸ºå¹´ä»½+ä¸‰ä½å¦‚2013001 
-const int hour_pay=260; 		//è®¾å®šæ¯å°æ—¶å·¥èµ„ 
-const double pay_percent=0.05; 	//è®¾å®šææˆæ¯”ä¾‹ 
-enum type{_manager,_technican,_saleman,_salemanager};
-//è®¾å®šå­˜å‚¨çš„ç»“æž„ä½“å†…å®¹
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 struct data
 {
 	enum type _type; 
@@ -47,13 +30,8 @@ struct data
 	float work_hour;
 	float sale_sum;
 };
-<<<<<<< HEAD
 //ÒÔÏÂÎªÀà¶¨Òå 
 class employee	//Ðé»ùÀàÉ¾È¥ÁËÎÞÓÃµÄ¹¹Ôìº¯Êý 
-=======
-//ä»¥ä¸‹ä¸ºç±»å®šä¹‰ 
-class employee	//è™šåŸºç±»åˆ åŽ»äº†æ— ç”¨çš„æž„é€ å‡½æ•° 
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 {
 protected:
 	char name[10]; 
@@ -166,11 +144,7 @@ ostream& operator <<(ostream& cout,employee & temp)
 	cout<<temp.individualEmpNo<<endl<<temp.grade<<endl<<temp.accumPay<<endl<<endl;		//id,grade,accumpay 
 	return cout;
 }
-<<<<<<< HEAD
 istream& operator >>(istream& cin,manager & temp)			//ÖØÔØ¸÷ÖÖÊäÈëÊä³ö 
-=======
-istream& operator >>(istream& cin,manager & temp)			//é‡è½½å„ç§è¾“å…¥è¾“å‡º 
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 {
 	cout<<"Please input Grade:";
 	cin>>temp.grade;
@@ -221,11 +195,7 @@ ostream& operator <<(ostream& cout,salemanager & temp)
 	return cout;
 }
 //-------------------
-<<<<<<< HEAD
 //ÒÔÏÂÎªËÑË÷º¯Êý 
-=======
-//ä»¥ä¸‹ä¸ºæœç´¢å‡½æ•° 
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 bool manager::search(int id)
 {
 	if (individualEmpNo==id) 
@@ -337,11 +307,7 @@ bool salemanager::search(char *name)
 	else return 0;
 }
 //------------
-<<<<<<< HEAD
 //ÒÔÏÂÎªÒÀ¿¿½á¹¹Ìå¹¹½¨Ààº¯Êý
-=======
-//ä»¥ä¸‹ä¸ºä¾é ç»“æž„ä½“æž„å»ºç±»å‡½æ•°
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 manager::manager(data p)
 {
 	strcpy(name,p.name);
@@ -378,11 +344,7 @@ salemanager::salemanager(data p)
 	if(p.id>em_sum) em_num=p.id;
 }
 //--------------
-<<<<<<< HEAD
 //ÒÔÏÂÎªÉý¼¶º¯Êý
-=======
-//ä»¥ä¸‹ä¸ºå‡çº§å‡½æ•°
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 void manager::upgrade()
 {
 	grade++;
@@ -405,11 +367,7 @@ void salemanager::upgrade()
 	accumPay=1.1*(accumPay-sale_sum*pay_percent)+sale_sum*pay_percent*1.2;
 } 
 //--------------------
-<<<<<<< HEAD
 //ÒÔÏÂÎªÀàÉú³É½á¹¹ÌåµÄº¯Êý
-=======
-//ä»¥ä¸‹ä¸ºç±»ç”Ÿæˆç»“æž„ä½“çš„å‡½æ•°
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 data manager::transport()
 {
 	data temp;
@@ -459,11 +417,7 @@ data salemanager::transport()
 	return temp;
 }
 //----------------
-<<<<<<< HEAD
 //ÒÔÏÂÎª¸ü¸Ä¶ÔÏóÊý¾ÝµÄº¯Êý
-=======
-//ä»¥ä¸‹ä¸ºæ›´æ”¹å¯¹è±¡æ•°æ®çš„å‡½æ•°
->>>>>>> 03c84e37ba7e1419a3652df2add2fd1947fc8a76
 void manager::change_detail(int num)
 {
 	char temp[24];
