@@ -6,7 +6,7 @@ void init()
 	em_num=1000*(t/31104000+1969);
 	fstream infile(rout,ios::in|ios::out|ios::binary|ios::ate);
 	em_sum=infile.tellg()/sizeof(data);
-	infile.seekp((em_sum-1)*sizeof(data),ios::beg);	//å¯»æ‰¾æœ€å¤§ç¼–å·
+	infile.seekp((em_sum-1)*sizeof(data),ios::beg);	//Ñ°ÕÒ×î´ó±àºÅ
 	data temp;
 	infile.read((char *)&temp,sizeof(data));
 	if(temp.id>em_num) em_num=temp.id;
@@ -20,11 +20,11 @@ void addinfo()
 	data temp; 
 	cout<<"Please choose the type of the employee.\n1.Manager\n2.Technician\n3.Saleman\n4.Salemanager.\n";
 	cin>>ch;
-	temp._type=(type)(ch-1);				//è®¾å®šç§ç±» 
+	temp._type=(type)(ch-1);				//Éè¶¨ÖÖÀà 
 	switch(ch)
 	{
-		case 1:					//è¾“å…¥managerç±» 
-			temp.accumPay=12000; //ç³»ç»Ÿè®¾å®š
+		case 1:					//ÊäÈëmanagerÀà 
+			temp.accumPay=12000; //ÏµÍ³Éè¶¨
 			temp.id=++em_num;
 			cout<<"Input Name:" ;
 			cin>>temp.name;
@@ -59,8 +59,8 @@ void addinfo()
 			break;
 		default:
 			cout<<"Wrong input! Try again.\n";
-			getchar();getchar();		//æä¾›åœé¡¿çš„è€åŠæ³• 
-			addinfo();return;					//é€’å½’é‡æ–°è¾“å…¥ 
+			getchar();getchar();		//Ìá¹©Í£¶ÙµÄÀÏ°ì·¨ 
+			addinfo();return;					//µİ¹éÖØĞÂÊäÈë 
 	}
 	for(int i=0;i<em_sum;i++)
 	{
@@ -81,12 +81,12 @@ void addinfo()
 }
 void readwrite()
 {
-	system("cls");		//æ¸…ä¸ªå±
+	system("cls");		//Çå¸öÆÁ
 	int wrong_int;
 	int count=0;
 	int flag=-1;
-	data temp;			//å»ºç«‹ä¸´æ—¶è¯»å–ç»“æ„ä½“
-	employee **temp_em = new employee*[em_sum];		//ä¸ºå…¨ä½“å‘˜å·¥åˆ›å»ºæ•°ç»„
+	data temp;			//½¨Á¢ÁÙÊ±¶ÁÈ¡½á¹¹Ìå
+	employee **temp_em = new employee*[em_sum];		//ÎªÈ«ÌåÔ±¹¤´´½¨Êı×é
 	fstream infile(rout,ios::in|ios::out|ios::binary);
 	if(!infile) 
 	{
@@ -95,7 +95,7 @@ void readwrite()
 	}	
 
 	infile.seekg(ios::beg);
-	//ä¸‹é¢è¯»å…¥äº†æ–‡ä»¶ä¸­çš„æ‰€æœ‰æ•°æ®
+	//ÏÂÃæ¶ÁÈëÁËÎÄ¼şÖĞµÄËùÓĞÊı¾İ
 	for(int i=0;i<em_sum;i++)
 	{
 		infile.read ((char*)&temp,sizeof(data));
@@ -117,7 +117,7 @@ void readwrite()
 		cout<<i+1<<" item(s) read"<<endl;
 	}
 	infile.close(); 
-	//ä¸‹é¢å¼€å§‹æœç´¢
+	//ÏÂÃæ¿ªÊ¼ËÑË÷
 	cout<<"**********************\nSearch for\n1.Name\n2.ID\n";
 	cin>>wrong_int;
 	switch(wrong_int)
@@ -141,7 +141,11 @@ void readwrite()
 		cout<<"Wrong Input\n";
 		break;
 	}
-	if (count==0) cout<<"No Match Item\n";
+	if (count==0) 
+	{
+		cout<<"No Match Item\n";
+		getchar();	
+	}
 	else
 	{
 		count--;
@@ -164,8 +168,14 @@ void readwrite()
 				cout<<"Wrong Input\n";
 				getchar();getchar();
 		}
-		fstream change(rout,ios::out|ios::trunc|ios::beg|ios::binary);
-		for(int i=0;i<em_sum;i++) {if(i!=flag) change.write((char *)&temp_em[i]->transport(),sizeof(data));} 
+		fstream change(rout,ios::out|ios::trunc|ios::binary);
+		for(int i=0;i<em_sum;i++) 
+		{
+			if(i!=flag) 
+			{	temp=temp_em[i]->transport();
+				change.write((char *)&temp,sizeof(data));
+			}
+		}
 		change.close();
 		init();
 	}
@@ -178,7 +188,7 @@ void printscreen()
 	int chose_temp;
 	system("cls");
 	cout<<"     :BBBBBBBBBBBBBBBBBBBB.  .,i:L7LZBBBB.       1B1        \n     iBO.,:,:::,:,:,:::.BB:  BBBBBBBMXJvr  ,Bv   YBL        \n     :B0.,,:::::,,,:::,.OB.       7B       iBF   YBL        \n     :BBMBM0GOBBBBBBB8GPMB        FB,   .  ,BJ   vB7        \n     :Br BBk;.  ,B.   :uBB. FBBBBBBBBBBBBB ,Bj   YBL        \n     :Br  .;NB. rB: rBG7,        rBB       ,BY   LB7        \n     iBF ,i7kBBUiB.iBBBPYri     .BBBiL     :BJ   LBL        \n     vBXBBNGL    8.   :70BBi   ,BjvBUBBU   ,BY   vB7        \n     8B   .B1    BP           iBB YB  FBB7 :Bu   LBv        \n     BB  NBBBBBBBBBBBBBBBB   XBB  kB   .B: iBS   vB7        \n    ,Bk BB       Bu         rB0   SB       .N:   vBv        \n    BB 8BBBBBBBBBBBBBBBBBBBj :    NB.            rBL        \n   2BM ::::iii::iBB,:iiii;;,      8B.       .GYLjBBr        \n   ;B            B0               kB.        BBBBBY     \n";
-	cout<<"\n\tçŠ€åˆ©äººäº‹ç®¡ç†ç³»ç»Ÿ\n\t1ã€æ•°æ®å½•å…¥\n\t2ã€æ•°æ®æŸ¥è¯¢\n\t3ã€é€€å‡º\n"; 
+	cout<<"\n\tÏ¬ÀûÈËÊÂ¹ÜÀíÏµÍ³\n\t1¡¢Êı¾İÂ¼Èë\n\t2¡¢Êı¾İ²éÑ¯\n\t3¡¢ÍË³ö\n"; 
 	cin>>chose_temp;
 	try
 	{ 
