@@ -12,7 +12,32 @@ void init()
 	if(temp.id>em_num) em_num=temp.id;
 	infile.close();
 }
-
+void gen()
+{
+	data temp;
+	int grade_static[4][6]={0};
+	int pay_sum=0;
+	fstream in(rout,ios::in|ios::binary);
+	for(int i=0;i<em_sum;i++)
+	{
+		in.read((char*)&temp,sizeof(data));
+		grade_static[temp._type][temp.grade]++;
+		pay_sum+=temp.accumPay;
+	}
+	in.close();
+	system("cls");
+	cout<<"Grade:\t\t1\t2\t3\t4\t5\n-------------------------------------------------\nManager:";
+	for(int i=0;i<5;i++) cout<<"\t"<<grade_static[0][i];
+	cout<<"\nTechnician:";
+	for(int i=0;i<5;i++) cout<<"\t"<<grade_static[1][i];
+	cout<<"\nSaleman:";
+	for(int i=0;i<5;i++) cout<<"\t"<<grade_static[2][i];
+	cout<<"\nSalemanager:";
+	for(int i=0;i<5;i++) cout<<"\t"<<grade_static[1][i];
+	cout<<"\n-------------------------------------------------\nTotal Payment Per Month for employee' salary：￥"<<pay_sum
+		<<"\n\nPress Enter to Continue.\n";
+	getchar();getchar();
+}
 void addinfo()
 {
 	system("cls");
@@ -58,7 +83,8 @@ void addinfo()
 			temp.accumPay=8000+temp.sale_sum*pay_percent*0.8;
 			break;
 		default:
-			cout<<"Wrong input! Try again.\n";
+			cout<<"Wrong input! Try again.\n"
+			<<"\nPress Enter to Continue.\n";
 			getchar();getchar();		//提供停顿的老办法 
 			addinfo();return;					//递归重新输入 
 	}
@@ -143,7 +169,8 @@ void readwrite()
 	}
 	if (count==0) 
 	{
-		cout<<"No Match Item\n";
+		cout<<"No Match Item\n"
+		<<"\nPress Enter to Continue.\n";
 		getchar();	
 	}
 	else
@@ -165,7 +192,8 @@ void readwrite()
 			case 4:
 				break;
 			default:
-				cout<<"Wrong Input\n";
+				cout<<"Wrong Input\n"
+				<<"\nPress Enter to Continue.\n";
 				getchar();getchar();
 		}
 		fstream change(rout,ios::out|ios::trunc|ios::binary);
@@ -181,6 +209,7 @@ void readwrite()
 	}
 	for(int i=0;i<em_sum;i++) delete temp_em[i];
 	delete [] temp_em;
+	cout<<"\nPress Enter to Continue.\n";
 	getchar();
 } 
 void printscreen()
@@ -188,7 +217,7 @@ void printscreen()
 	int chose_temp;
 	system("cls");
 	cout<<"     :BBBBBBBBBBBBBBBBBBBB.  .,i:L7LZBBBB.       1B1        \n     iBO.,:,:::,:,:,:::.BB:  BBBBBBBMXJvr  ,Bv   YBL        \n     :B0.,,:::::,,,:::,.OB.       7B       iBF   YBL        \n     :BBMBM0GOBBBBBBB8GPMB        FB,   .  ,BJ   vB7        \n     :Br BBk;.  ,B.   :uBB. FBBBBBBBBBBBBB ,Bj   YBL        \n     :Br  .;NB. rB: rBG7,        rBB       ,BY   LB7        \n     iBF ,i7kBBUiB.iBBBPYri     .BBBiL     :BJ   LBL        \n     vBXBBNGL    8.   :70BBi   ,BjvBUBBU   ,BY   vB7        \n     8B   .B1    BP           iBB YB  FBB7 :Bu   LBv        \n     BB  NBBBBBBBBBBBBBBBB   XBB  kB   .B: iBS   vB7        \n    ,Bk BB       Bu         rB0   SB       .N:   vBv        \n    BB 8BBBBBBBBBBBBBBBBBBBj :    NB.            rBL        \n   2BM ::::iii::iBB,:iiii;;,      8B.       .GYLjBBr        \n   ;B            B0               kB.        BBBBBY     \n";
-	cout<<"\n\t犀利人事管理系统\n\t1、数据录入\n\t2、数据查询\n\t3、退出\n"; 
+	cout<<"\n\t犀利人事管理系统\n\t1、数据录入\n\t2、数据查询\n\t3、数据统计\n\t4、退出\n"; 
 	cin>>chose_temp;
 	try
 	{ 
@@ -203,6 +232,9 @@ void printscreen()
 				printscreen(); 
 				break;
 			case 3:
+				gen(); 
+				printscreen();
+			case 4:
 				return;
 				break;
 			default: break;
@@ -210,7 +242,8 @@ void printscreen()
 	}
 	catch(int)
 	{
-		cout<<"File does not exist!"<<endl;
+		cout<<"File does not exist!"<<endl
+			<<"\nPress Enter to Continue.\n";
 		getchar(); getchar();
 		printscreen();
 	} 

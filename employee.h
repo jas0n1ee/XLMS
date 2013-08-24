@@ -347,24 +347,56 @@ salemanager::salemanager(data p)
 //以下为升级函数
 void manager::upgrade()
 {
-	grade++;
-	accumPay++;
-	accumPay=accumPay*1.1;
+	if(grade<6)
+	{
+		grade++;
+		accumPay++;
+		accumPay=accumPay*1.1;
+	}
+	else 
+	{
+		cout<<"Can't upgrade. \nCurrent Grade is 5!";
+		getchar();
+	}
 } 
 void technician::upgrade()
 {
-	grade++;
-	accumPay*=1.2;
+	if(grade<6)
+	{	
+		grade++;
+		accumPay*=1.2;
+	}
+	else 
+	{
+		cout<<"Can't upgrade. \nCurrent Grade is 5!";
+		getchar();
+	}
 } 
 void saleman::upgrade()
 {
-	grade++;
-	accumPay*=1.2;
+	if(grade<6)
+	{
+		grade++;
+		accumPay*=1.2;
+	}
+	else 
+	{
+		cout<<"Can't upgrade. \nCurrent Grade is 5!";
+		getchar();
+	}
 }
 void salemanager::upgrade()
 {
-	grade++;
-	accumPay=1.1*(accumPay-sale_sum*pay_percent)+sale_sum*pay_percent*1.2;
+	if(grade<6)
+	{
+		grade++;
+		accumPay=1.1*(accumPay-sale_sum*pay_percent)+sale_sum*pay_percent*1.2;
+	}
+	else 
+	{
+		cout<<"Can't upgrade. \nCurrent Grade is 5!";
+		getchar();
+	}
 } 
 //--------------------
 //以下为类生成结构体的函数
