@@ -347,7 +347,7 @@ salemanager::salemanager(data p)
 //以下为升级函数
 void manager::upgrade()
 {
-	if(grade<6)
+	if(grade<5)
 	{
 		grade++;
 		accumPay++;
@@ -361,7 +361,7 @@ void manager::upgrade()
 } 
 void technician::upgrade()
 {
-	if(grade<6)
+	if(grade<5)
 	{	
 		grade++;
 		accumPay*=1.2;
@@ -374,7 +374,7 @@ void technician::upgrade()
 } 
 void saleman::upgrade()
 {
-	if(grade<6)
+	if(grade<5)
 	{
 		grade++;
 		accumPay*=1.2;
@@ -387,7 +387,7 @@ void saleman::upgrade()
 }
 void salemanager::upgrade()
 {
-	if(grade<6)
+	if(grade<5)
 	{
 		grade++;
 		accumPay=1.1*(accumPay-sale_sum*pay_percent)+sale_sum*pay_percent*1.2;
