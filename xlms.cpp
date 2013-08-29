@@ -169,8 +169,7 @@ void readwrite()
 	}
 	if (count==0) 
 	{
-		cout<<"No Match Item\n"
-		<<"\nPress Enter to Continue.\n";
+		cout<<"No Match Item\n";
 		getchar();	
 	}
 	else
