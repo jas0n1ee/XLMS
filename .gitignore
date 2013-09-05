@@ -16,4 +16,5 @@
 *.dat
 #document
 *.docx
-
+*~
+*tmp

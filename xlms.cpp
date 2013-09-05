@@ -21,7 +21,7 @@ void gen()
 	for(int i=0;i<em_sum;i++)
 	{
 		in.read((char*)&temp,sizeof(data));
-		grade_static[temp._type][temp.grade]++;
+		grade_static[temp._type][temp.grade-1]++;
 		pay_sum+=temp.accumPay;
 	}
 	in.close();
